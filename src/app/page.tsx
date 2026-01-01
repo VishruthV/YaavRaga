@@ -33,7 +33,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data._debug) {
-        console.log('--- Raga Guesser Debug Info ---');
+        console.log('--- Raga Identifier Debug Info ---');
         console.log('Model Used:', data._debug.modelUsed);
         console.log('Full Prompt:', data._debug.fullPrompt);
         console.log('Raw Response:', data._debug.rawResponse);
@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>
-        Hindustani Raga Guesser
+        Hindustani Raga Identifier
       </h1>
       <p className={styles.description}>
         Select the notes for Aroha (Ascending) and Avaroha (Descending) to identify the Raga.
