@@ -1,0 +1,231 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    max-width: 1200px;
+    /* Increased width for 3 octaves */
+    margin: 0 auto;
+}
+
+.toggleContainer {
+    display: flex;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.toggleButton {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.toggleButton.active {
+    background: var(--primary);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.fullKeyboard {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.octaveContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.octaveLabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.keyboard {
+    display: flex;
+    position: relative;
+}
+
+.key {
+    width: 40px;
+    /* Slightly narrower for more keys */
+    height: 180px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 0 0 0.3rem 0.3rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    color: var(--foreground);
+    font-weight: bold;
+    margin: 0 1px;
+}
+
+.key:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.key:active {
+    transform: translateY(2px);
+}
+
+.key.selected {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.key.black {
+    height: 110px;
+    background: #000;
+    color: #fff;
+    z-index: 1;
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 30px;
+    border-radius: 0 0 0.2rem 0.2rem;
+    position: absolute;
+    left: auto;
+    /* Handled by flex order/margin trick in simple CSS, but here we need careful placement */
+    /* Since we are using flex, the negative margin trick works for standard layout. 
+     However, to make it robust, we might need a better approach. 
+     For now, let's stick to the flex layout but adjust margins carefully. 
+  */
+    position: relative;
+    /* Reset absolute */
+    margin-left: -15px;
+    margin-right: -15px;
+    z-index: 10;
+}
+
+.key.black.selected {
+    background: var(--primary);
+    color: #000;
+}
+
+/* Swara label style */
+.swaraLabel {
+    font-size: 0.7rem;
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+.dotTop {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+.selectedNotes {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    min-height: 2rem;
+    justify-content: center;
+}
+
+.noteBadge {
+    background: var(--secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+}
+
+.actionButtons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.submitButton {
+    background: linear-gradient(135deg, var(--primary) 0%, #ffa500 100%);
+    color: #0a0a12;
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.submitButton:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px var(--primary-glow);
+}
+
+.submitButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background: #333;
+    color: #666;
+}
+
+.clearButton {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.clearButton:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--foreground);
+    border-color: var(--foreground);
+}
